@@ -1,0 +1,42 @@
+name: 'SteamMD'
+
+inputs:
+  steam_api_key:
+    description: 'Your Steam web API key.'
+    required: true
+  steam_vanity_url:
+    description: 'Your Steam vanity URL.'
+    required: false
+    default: ''
+  steam_id:
+    description: 'Your Steam account ID.'
+    required: false
+    default: ''
+  asset_path:
+    description: 'The path to the asset files.'
+    required: false
+    default: './generated/SteamMD/'
+  file_path:
+    description: 'The path to the file where the generated markdown will be saved.'
+    required: false
+    default: './'
+  skip_storing_assets:
+    description: 'Skip storing assets in the repository.'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'composite'
+  steps:
+    - run: python -m pip install requests
+      shell: bash
+    - run: python profile_markdown_generator.py
+      shell: bash
+      env:
+        STEAM_API_KEY: ${{ inputs.steam_api_key }}
+        STEAM_VANITY_URL: ${{ inputs.steam_vanity_url }}
+        STEAM_ID: ${{ inputs.steam_id }}
+        ASSET_PATH: ${{ inputs.asset_path }}
+        FILE_PATH: ${{ inputs.file_path }}
+        FILE_NAME: ${{ inputs.file_name }}
+        SKIP_STORING_ASSETS: ${{ inputs.skip_storing_assets }}
