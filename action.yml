@@ -30,7 +30,7 @@ runs:
   steps:
     - run: python -m pip install requests
       shell: bash
-    - run: python profile_markdown_generator.py
+    - run: python ${{ github.action_path }}/profile_markdown_generator.py
       shell: bash
       env:
         STEAM_API_KEY: ${{ inputs.steam_api_key }}
