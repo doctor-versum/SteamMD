@@ -38,7 +38,7 @@ runs:
       shell: bash
       env:
         STEAM_API_KEY: ${{ inputs.steam_api_key }}
-        STEAM_VANITY_URL: ${{ inputs.steam_vanity_url }}
+        VANITY_URL: ${{ inputs.steam_vanity_url }}
         STEAM_ID: ${{ inputs.steam_id }}
         ASSET_PATH: ${{ inputs.asset_path }}
         FILE_PATH: ${{ inputs.file_path }}
